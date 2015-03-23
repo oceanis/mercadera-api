@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323004827) do
+ActiveRecord::Schema.define(version: 20150323011749) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,5 +72,13 @@ ActiveRecord::Schema.define(version: 20150323004827) do
   end
 
   add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "api_token"
+    t.string   "name"
+    t.string   "role"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
