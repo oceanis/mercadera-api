@@ -2,7 +2,7 @@ class Api::V1::CategoriesController < ApplicationController
   respond_to :json
 
   before_action :authorize_api_key
-  before_action :set_category, only: [:show, :update, :destroy]
+  before_action :load_category, only: [:show, :update, :destroy]
 
   def index
     load_categories

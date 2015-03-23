@@ -2,7 +2,7 @@ class Api::V1::LocationsController < ApplicationController
   respond_to :json
 
   before_action :authorize_api_key
-  before_action :set_location, only: [:show, :update, :destroy]
+  before_action :load_location, only: [:show, :update, :destroy]
 
   def index
     load_locations
