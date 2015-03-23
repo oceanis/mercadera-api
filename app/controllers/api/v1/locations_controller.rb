@@ -1,4 +1,6 @@
 class Api::V1::LocationsController < ApplicationController
+  respond_to :json
+
   before_action :authorize_api_key
   before_action :set_location, only: [:show, :update, :destroy]
 
@@ -50,7 +52,7 @@ class Api::V1::LocationsController < ApplicationController
   end
 
   def location_params
-    location_params = params[:location]
+    location_params = params
     location_params ? location_params.permit(:name) : {}
   end
 
