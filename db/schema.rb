@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150323011749) do
+ActiveRecord::Schema.define(version: 20150323013052) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20150323011749) do
   add_index "favorited_listings", ["listing_id"], name: "index_favorited_listings_on_listing_id", using: :btree
   add_index "favorited_listings", ["user_id"], name: "index_favorited_listings_on_user_id", using: :btree
 
-  create_table "listing", force: :cascade do |t|
+  create_table "listings", force: :cascade do |t|
     t.integer  "subcategory_id"
     t.string   "name"
     t.text     "description"
@@ -43,10 +43,11 @@ ActiveRecord::Schema.define(version: 20150323011749) do
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
-  add_index "listing", ["location_id"], name: "index_listing_on_location_id", using: :btree
-  add_index "listing", ["subcategory_id"], name: "index_listing_on_subcategory_id", using: :btree
+  add_index "listings", ["location_id"], name: "index_listings_on_location_id", using: :btree
+  add_index "listings", ["subcategory_id"], name: "index_listings_on_subcategory_id", using: :btree
 
   create_table "locations", force: :cascade do |t|
     t.string   "name"

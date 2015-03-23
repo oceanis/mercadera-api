@@ -11,7 +11,7 @@ class CreateInitialModels < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :listing do |t|
+    create_table :listings do |t|
       t.integer :subcategory_id, index: true
       t.string :name
       t.text :description
