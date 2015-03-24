@@ -8,6 +8,10 @@ Rails.application.routes.draw do
         collection do
           get 'new_s3_upload'
         end
+
+        member do
+          post 'picture'
+        end
       end
     end
   end

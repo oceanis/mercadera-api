@@ -11,4 +11,6 @@ class ListingSerializer < ActiveModel::Serializer
              :created_at,
              :updated_at,
              :user_id
+
+  has_many :listing_pictures
 end

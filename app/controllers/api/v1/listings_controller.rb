@@ -22,6 +22,12 @@ class Api::V1::ListingsController < ApplicationController
                    fields: direct_post_url.fields.to_json.gsub!(/\"/, '\'') }, status: 200
   end
 
+  def picture
+    load_listing
+    build_listing_picture
+    save_listing_picture or respond_with @listing_picture
+  end
+
   def update
     load_listing
     build_listing
@@ -53,9 +59,20 @@ class Api::V1::ListingsController < ApplicationController
     @listing.attributes = listing_params
   end
 
+  def build_listing_picture
+    @listing_picture ||= listing_pictures_scope.build
+    @listing_picture.attributes = listing_picture_params
+  end
+
   def save_listing
     if @listing.save
       render json: @listing
+    end
+  end
+
+  def save_listing_picture
+    if @listing_picture.save
+      render json: @listing_picture
     end
   end
 
@@ -72,7 +89,16 @@ class Api::V1::ListingsController < ApplicationController
                                            :user_id) : {}
   end
 
+  def listing_picture_params
+    listing_picture_params = params
+    listing_picture_params ? listing_picture_params.permit(:url) : {}
+  end
+
   def listings_scope
     Listing.all
+  end
+
+  def listing_pictures_scope
+    @listing.listing_pictures
   end
 end
