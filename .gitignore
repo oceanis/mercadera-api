@@ -16,7 +16,9 @@
 !/log/.keep
 /tmp
 
-
 # Ignore Passenger related files.
 passenger.5000.pid
 passenger.5000.pid.lock
+
+# Ignore .env file.
+.env
