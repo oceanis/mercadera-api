@@ -14,6 +14,14 @@ class Api::V1::ListingsController < ApplicationController
     save_listing or respond_with @listing
   end
 
+  def new_s3_upload
+    direct_post_url = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}",
+                                               success_action_status: 201,
+                                               acl: :public_read)
+    render json: { url: direct_post_url.url.to_s,
+                   fields: direct_post_url.fields.to_json.gsub!(/\"/, '\'') }, status: 200
+  end
+
   def update
     load_listing
     build_listing

@@ -4,7 +4,11 @@ Rails.application.routes.draw do
       resources :locations
       resources :categories
       resources :subcategories
-      resources :listings
+      resources :listings do
+        collection do
+          get 'new_s3_upload'
+        end
+      end
     end
   end
 
