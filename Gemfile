@@ -13,6 +13,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'responders', '~> 2.0'
 gem 'active_model_serializers'
 gem 'aws-sdk', '~> 1.63.0'
+gem 'rails_admin'
 
 group :development, :test do
   gem 'spring'
