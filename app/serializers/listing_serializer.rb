@@ -10,6 +10,7 @@ class ListingSerializer < ActiveModel::Serializer
              :location_id,
              :created_at,
              :updated_at,
+             :expires_at,
              :user_id
 
   has_many :listing_pictures

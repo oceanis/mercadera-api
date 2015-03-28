@@ -57,6 +57,7 @@ class Api::V1::ListingsController < ApplicationController
   def build_listing
     @listing ||= listings_scope.build
     @listing.attributes = listing_params
+    @listing.expires_at = Time.now + 7.days
   end
 
   def build_listing_picture
